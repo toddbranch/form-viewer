@@ -20,6 +20,14 @@ function readerWatcher() {
   } else {
     results = getXML();
 
+    var dims = $(results).find('designer\\:pagesize, pagesize').eq(0).text().split(';');
+    var pageStyle = {
+      width: dims[0] + 'px',
+      height: dims[1] + 'px'
+    };
+
+    // let's get page dimensions here and create a height / width style to be applied to each page
+
     var pages = $(results).find('page');
 
     _.each(pages, function (page) {
@@ -29,6 +37,10 @@ function readerWatcher() {
       addButtons($page, $pageEl);
       addLabels($page, $pageEl);
       addFields($page, $pageEl);
+      addPopups($page, $pageEl);
+      addChecks($page, $pageEl);
+
+      $pageEl.css(pageStyle);
 
       $('.content').append($pageEl);
     });
@@ -126,5 +138,58 @@ function addFields($page, $pageEl) {
     renderedField.text(value);
 
     $pageEl.append(renderedField);
+  });
+}
+
+function addPopups($page, $pageEl) {
+  var popups = $page.find('popup');
+
+  _.each(popups, function (popup) {
+    var $popup = $(popup);
+
+    var $location = $popup.find('itemlocation');
+
+    var renderedPopup = $('<select class="popup"></select>');
+    renderedPopup.css(getStyles($location));
+
+    var groupName = $popup.find('group').text();
+
+    // need to get each option and append here
+    var $options = $page.find('group:contains("' + groupName + '")').parent('cell');
+
+    _.each($options, function (option) {
+      var renderedOption = $('<option></option>');
+      var optionText = $(option).find('value').text();
+      renderedOption.text(optionText);
+      renderedOption.val(optionText);
+      renderedPopup.append(renderedOption);
+    });
+
+    var selectedCell = $popup.find('value').text();
+    if (selectedCell) {
+      var $selectedCell = $page.find('cell[sid=' + selectedCell + ']');
+      renderedPopup.val($selectedCell.find('value').text());
+    }
+
+    $pageEl.append(renderedPopup);
+  });
+}
+
+function addChecks($page, $pageEl) {
+  var checks = $page.find('check');
+
+  _.each(checks, function (check) {
+    var $check = $(check);
+
+    var $location = $check.find('itemlocation');
+
+    var renderedCheck = $('<input type="checkbox" class="check"></input>');
+    renderedCheck.css(getStyles($location));
+
+    if ($check.find('value').text() === 'on') {
+      renderedCheck.prop('checked', true);
+    }
+
+    $pageEl.append(renderedCheck);
   });
 }
