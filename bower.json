@@ -1,0 +1,8 @@
+{
+  "name": "files",
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "pako": "~0.2.7",
+    "underscore": "~1.8.3"
+  }
+}

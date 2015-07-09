@@ -1,0 +1,26 @@
+.label {
+  font-size: 10px;
+}
+
+.button {
+  padding: 0;
+  border: 0;
+}
+
+.page {
+  position: relative;
+  /* want to get width / height from the doc */
+  height: 1300px;
+  width: 1000px;
+  background-color: rgb(242, 242, 242);
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.field {
+  font-family: Times;
+  padding: 0;
+  font-size: 12px;
+  line-height: 21px;
+  letter-spacing: 1px;
+}
