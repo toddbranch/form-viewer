@@ -1,0 +1,9 @@
+<file-input file="ctrl.file"></file-input>
+<input type="text" ng-show="ctrl.name" ng-model="ctrl.name">
+<button ng-click="ctrl.save()">Save</button>
+
+<div>
+  {{ctrl.form}}
+</div>
+
+<page-view ng-repeat="page in ctrl.pages" page="page"></page-view>

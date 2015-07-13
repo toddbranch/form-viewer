@@ -26,8 +26,6 @@ function readerWatcher() {
       height: dims[1] + 'px'
     };
 
-    // let's get page dimensions here and create a height / width style to be applied to each page
-
     var pages = $(results).find('page');
 
     _.each(pages, function (page) {
@@ -65,10 +63,25 @@ function save() {
 }
 
 function getStyles($location) {
-  var xLoc = $location.find('x').text();
-  var yLoc = $location.find('y').text();
-  var height = $location.find('height').text();
-  var width = $location.find('width').text();
+  // need to check for 'ae'
+  var xLoc, yLoc, height, width;
+
+  var $ae = $location.find('ae');
+
+  if ($ae.length) {
+    var $xy = $ae.eq(0).find('ae');
+    xLoc = $xy.eq(1).text();
+    yLoc = $xy.eq(2).text();
+
+    var $hw = $ae.eq(4).find('ae');
+    width = $hw.eq(1).text();
+    height = $hw.eq(2).text();
+  } else {
+    xLoc = $location.find('x').text();
+    yLoc = $location.find('y').text();
+    height = $location.find('height').text();
+    width = $location.find('width').text();
+  }
 
   return {
     position: 'absolute',

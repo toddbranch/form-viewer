@@ -1,0 +1,20 @@
+- Add build system
+  - Write some tests
+- Detect different types of files, handle them differently
+  - Uncompressed (xml file)
+  - base64-gzip
+  - If encoding is asc-gzip, can just display an unsupported message for now
+  - Should handle errors gracefully, display error message
+
+?- Display inline base64 images
+- Better file download scheme
+  - Popup?
+?- File drawer (auto-save to local storage)
+?  - Can display type of file in sub-heading text (OPR, EPR, PRF, etc.)
+- Create basic home page
+  - Look into SEO - have to be near top of google search results
+- Test which forms can be successfully read
+  - Display list of known handle forms, known unhandled forms, unknowns
+- Mixpanel and associated events
+- Email list where people can get updates
+- Form navigation (show one page at a time)

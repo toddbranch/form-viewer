@@ -1,17 +1,25 @@
-<html>
+<html ng-app="app">
   <head>
     <script src="bower_components/pako/dist/pako.js"></script>
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/viewer.js"></script>
+    <script src="app/fileService.js"></script>
+    <script src="app/fileInput.js"></script>
+    <script src="app/pageView.js"></script>
+    <script src="app/buttonView.js"></script>
+    <script src="app/labelView.js"></script>
+    <script src="app/fieldView.js"></script>
+    <script src="app/checkView.js"></script>
+    <script src="app/popupView.js"></script>
+    <script src="app/lineView.js"></script>
+    <script src="app/positionService.js"></script>
+    <script src="app/disabledService.js"></script>
     <link href="style.css" rel="stylesheet">
   </head>
   <body>
-    <input id="test" type="file">
-    <button id="viewButton">View Form</button>
-    <button id="saveButton">Save</button>
-
-    <div class="content"></div>
-
-    <script src="script.js"></script>
+    <viewer></viewer>
   </body>
 </html>
